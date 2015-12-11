@@ -10,8 +10,10 @@
 </div><br><br>
 
 Athlete lookup
-<form>
-    <input type="text" name="athletename">
+<form action="/your-name" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Search" />
 </form>
 
 <form>
@@ -24,7 +26,7 @@ Hoang Ngo athlete profile<br><br>
         </tr>
         <tr>
             <td>Back Squat 1RM </td>
-            <td>{{ athleteprofile }}</td>
+            <td>{{ athleteprofile.backsquat }}</td>
         </tr>
         <tr>
             <td>Deadlift 1RM </td>
