@@ -34,6 +34,7 @@ from .models import Question, Choice, AthleteProfile
 class AthleteView(generic.ListView):
     model = AthleteProfile
     template_name = 'polls/index.html'
+    context_object_name = 'athleteprofile'
 
     def get_queryset(self):
         """Return an athlete."""
