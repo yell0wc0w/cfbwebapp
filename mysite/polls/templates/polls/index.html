@@ -24,20 +24,21 @@ Hoang Ngo athlete profile<br><br>
         </tr>
         <tr>
             <td>Back Squat 1RM </td>
-            <td>999</td>
+            <td>{{ athleteprofile }}</td>
         </tr>
         <tr>
             <td>Deadlift 1RM </td>
             <td>999</td>
         </tr>
     </table>
-    <input type="submit"><br>
 </form>
 
-{% if latest_question_list %}
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+Testing template tag: {{ athleteprofile }}
+
+<!--{% if latest_question_list %}-->
+    <!--{% for question in latest_question_list %}-->
+        <!--<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>-->
+    <!--{% endfor %}-->
+<!--{% else %}-->
+    <!--<p>No polls are available.</p>-->
+<!--{% endif %}-->
