@@ -1,0 +1,43 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}" />
+
+<div id="centeredmenu">
+   <ul>
+      <li><a href="#">Group view</a></li>
+      <li><a href="#" class="active">Athlete view</a></li>
+   </ul>
+</div><br><br>
+
+Athlete lookup
+<form>
+    <input type="text" name="athletename">
+</form>
+
+<form>
+Hoang Ngo athlete profile<br><br>
+    <table style="width:30%;text-align:center">
+        <tr>
+            <th>Movement </th>
+            <th>Current PR</th>
+            <th>New score to register</th>
+        </tr>
+        <tr>
+            <td>Back Squat 1RM </td>
+            <td>999</td>
+        </tr>
+        <tr>
+            <td>Deadlift 1RM </td>
+            <td>999</td>
+        </tr>
+    </table>
+    <input type="submit"><br>
+</form>
+
+{% if latest_question_list %}
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
