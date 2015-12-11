@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
-
+from django.core.exceptions import MultipleObjectsReturned
 from .models import Question, Choice, AthleteProfile
 from .forms import AthleteNameForm
 
@@ -20,17 +20,20 @@ class DetailView(generic.DetailView):
 
 def AthleteView(request):
     # Handle text input, as needed
+    athleteName = ''
     if request.method == 'POST':
         form = AthleteNameForm(request.POST)
         if form.is_valid():
             athleteName = form.cleaned_data.get('athleteName')
-            print('Name successful!')
     else:
-        athleteName = 'Hoang'
         form = AthleteNameForm()
 
 
     # Preparation of rendering screen
-    athleteprofile = AthleteProfile.objects.get(name__contains=athleteName)
+    try:
+        athleteprofile = AthleteProfile.objects.get(name__contains=athleteName)
+    except MultipleObjectsReturned:
+        athleteprofile = AthleteProfile.objects.filter(name__contains=athleteName)[0]
+
     context = {'athleteprofile': athleteprofile, 'form': form}
     return render(request, 'polls/index.html', context)
