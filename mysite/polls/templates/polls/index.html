@@ -9,14 +9,14 @@
    </ul>
 </div><br><br>
 
-<form action="/your-name" method="post">
+<form method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Search" />
 </form>
 
 <form>
-Hoang Ngo athlete profile<br><br>
+{{ athleteprofile.name }} athlete profile<br><br>
     <table style="width:30%;text-align:center">
         <tr>
             <th>Movement </th>
