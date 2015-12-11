@@ -32,14 +32,21 @@ class DetailView(generic.DetailView):
 #     model = Question
 #     template_name = 'polls/results.html'
 
-class AthleteView(generic.ListView):
-    model = AthleteProfile
-    template_name = 'polls/index.html'
-    context_object_name = 'athleteprofile'
+def AthleteView(request):
+    athleteprofile = AthleteProfile.objects.get(name__contains="Hoang")
+    form = AthleteNameForm()
 
-    def get_queryset(self):
-        """Return an athlete."""
-        return AthleteProfile.objects.get(name__contains="Hoang")
+    context = {'athleteprofile': athleteprofile, 'form': form}
+    return render(request, 'polls/index.html', context)
+
+# class AthleteView(generic.ListView):
+#     model = AthleteProfile
+#     template_name = 'polls/index.html'
+#     context_object_name = 'athleteprofile'
+#
+#     def get_queryset(self):
+#         """Return an athlete."""
+#         return AthleteProfile.objects.get(name__contains="Hoang")
 
 def loadathlete(request, AthleteNameToLoad):
     result = get_object_or_404(AthleteProfile, AthleteProfile.objects.get(name__contains="Louis"))
