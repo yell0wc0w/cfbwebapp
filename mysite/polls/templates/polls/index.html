@@ -1,6 +1,26 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}" />
+<head>
+    <script src="/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.jeditable.mini.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+
+$(function() {
+      $(".editable_textarea").editable("http://localhost:8000/polls/",
+      {
+          type   : 'textarea',
+          submitdata: { _method: "post" },
+          select : true,
+          submit : 'OK',
+          cancel : 'cancel',
+      });
+
+});
+
+    </script>
+
+</head>
 
 <div id="centeredmenu">
    <ul>
@@ -9,35 +29,25 @@
    </ul>
 </div><br><br>
 
-<form method="post">
+<form action="http://localhost:8000/polls/" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Search" />
 </form>
 
-<form>
 {{ athleteprofile.name }} athlete profile<br><br>
-    <table style="width:30%;text-align:center">
-        <tr>
-            <th>Movement </th>
-            <th>Current PR</th>
-            <th>New score to register</th>
-        </tr>
-        <tr>
-            <td>Back Squat 1RM </td>
-            <td>{{ athleteprofile.backsquat }}</td>
-        </tr>
-        <tr>
-            <td>Deadlift 1RM </td>
-            <td>999</td>
-        </tr>
-    </table>
-</form>
+<table style="width:30%;text-align:center">
+    <tr>
+        <th>Movement </th>
+        <th>Current PR</th>
+    </tr>
+    <tr>
+        <td>Back Squat 1RM </td>
+        <td class="editable_textarea" id="backsquat_value">{{ athleteprofile.backsquat }}</td>
+    </tr>
+    <tr>
+        <td>Deadlift 1RM </td>
+        <td>{{ athleteprofile.deadlift }}</td>
+    </tr>
+</table>
 
-<!--{% if latest_question_list %}-->
-    <!--{% for question in latest_question_list %}-->
-        <!--<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>-->
-    <!--{% endfor %}-->
-<!--{% else %}-->
-    <!--<p>No polls are available.</p>-->
-<!--{% endif %}-->
