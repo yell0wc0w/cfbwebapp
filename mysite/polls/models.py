@@ -35,3 +35,16 @@ class AthleteProfile(models.Model):
     def __str__(self):
         return self.name
 
+    def set_stat_value(self, stat_to_change, value):
+        if stat_to_change == 'backsquat_value':
+            self.backsquat = value
+        elif stat_to_change == 'deadlift_value':
+            self.deadlift = value
+
+    def get_stat_value(self, stat_to_read):
+        if stat_to_read == 'backsquat_value':
+            value = self.backsquat
+        elif stat_to_read == 'deadlift_value':
+            value = self.deadlift
+
+        return value

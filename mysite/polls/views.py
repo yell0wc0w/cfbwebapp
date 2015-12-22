@@ -42,6 +42,7 @@ def AthleteView(request):
         html = 'polls/index.html'
 
     elif POST_data.get('id') is not None:
+
         #retrieve profile
         athletename = POST_data.get('athletename')
 
@@ -51,12 +52,12 @@ def AthleteView(request):
             athleteprofile = AthleteProfile.objects.filter(name__contains=athletename)[0]
 
         #save data in DB
-        athleteprofile.backsquat = int(POST_data.get('value'))
+        athleteprofile.set_stat_value(POST_data.get('id'), int(POST_data.get('value')))
         athleteprofile.save()
 
 
         #now return new value to page (perhaps DB call is not required? future optimization)
-        context = {'stat_result': athleteprofile.backsquat}
+        context = {'stat_result': athleteprofile.get_stat_value(POST_data.get('id')) }
         html = 'polls/results.html'
 
     return render(request, html, context)
