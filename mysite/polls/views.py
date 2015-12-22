@@ -20,20 +20,43 @@ class DetailView(generic.DetailView):
 
 def AthleteView(request):
     # Handle text input, as needed
-    athleteName = ''
-    if request.method == 'POST':
-        form = AthleteNameForm(request.POST)
-        if form.is_valid():
-            athleteName = form.cleaned_data.get('athleteName')
-    else:
-        form = AthleteNameForm()
+    athletename = ''
+    POST_data = request.POST.dict()
+
+    if POST_data.get('id') is None:
+
+        if request.method == 'POST':
+            form = AthleteNameForm(request.POST)
+            if form.is_valid():
+                athletename = form.cleaned_data.get('athletename')
+        else:
+            form = AthleteNameForm()
+
+        # Preparation of rendering screen
+        try:
+            athleteprofile = AthleteProfile.objects.get(name__contains=athletename)
+        except MultipleObjectsReturned:
+            athleteprofile = AthleteProfile.objects.filter(name__contains=athletename)[0]
+
+        context = {'athleteprofile': athleteprofile, 'form': form}
+        html = 'polls/index.html'
+
+    elif POST_data.get('id') is not None:
+        #retrieve profile
+        athletename = POST_data.get('athletename')
+
+        try:
+            athleteprofile = AthleteProfile.objects.get(name__contains=athletename)
+        except MultipleObjectsReturned:
+            athleteprofile = AthleteProfile.objects.filter(name__contains=athletename)[0]
+
+        #save data in DB
+        athleteprofile.backsquat = int(POST_data.get('value'))
+        athleteprofile.save()
 
 
-    # Preparation of rendering screen
-    try:
-        athleteprofile = AthleteProfile.objects.get(name__contains=athleteName)
-    except MultipleObjectsReturned:
-        athleteprofile = AthleteProfile.objects.filter(name__contains=athleteName)[0]
+        #now return new value to page (perhaps DB call is not required? future optimization)
+        context = {'stat_result': athleteprofile.backsquat}
+        html = 'polls/results.html'
 
-    context = {'athleteprofile': athleteprofile, 'form': form}
-    return render(request, 'polls/index.html', context)
+    return render(request, html, context)
