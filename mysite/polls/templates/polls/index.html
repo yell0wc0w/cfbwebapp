@@ -10,7 +10,7 @@ $(function() {
     $(".editable_textarea").editable("http://localhost:8000/polls/",
     {
         type   : 'textarea',
-        submitdata: { _method: "post", csrfmiddlewaretoken: "{{ csrf_token }}" },
+        submitdata: { _method: "post", csrfmiddlewaretoken: "{{ csrf_token }}", athletename: $("#athletename").text() },
         select : true,
         submit : 'OK',
         cancel : 'cancel',
@@ -33,7 +33,7 @@ $(function() {
     <input type="submit" value="Search" />
 </form>
 
-{{ athleteprofile.name }} athlete profile<br><br>
+<h1 id="athletename">{{ athleteprofile.name }}</h1>
 <table style="width:30%;text-align:center">
     <tr>
         <th>Movement </th>
