@@ -7,18 +7,16 @@
     <script type="text/javascript" charset="utf-8">
 
 $(function() {
-      $(".editable_textarea").editable("http://localhost:8000/polls/",
-      {
-          type   : 'textarea',
-          submitdata: { _method: "post" },
-          select : true,
-          submit : 'OK',
-          cancel : 'cancel',
-      });
-
+    $(".editable_textarea").editable("http://localhost:8000/polls/",
+    {
+        type   : 'textarea',
+        submitdata: { _method: "post", csrfmiddlewaretoken: "{{ csrf_token }}" },
+        select : true,
+        submit : 'OK',
+        cancel : 'cancel',
+    });
 });
-
-    </script>
+</script>
 
 </head>
 
