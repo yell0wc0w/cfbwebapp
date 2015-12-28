@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
-from django.core.exceptions import MultipleObjectsReturned
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from .models import Question, Choice, AthleteProfile
 from .forms import AthleteNameForm
 
@@ -21,24 +21,29 @@ class DetailView(generic.DetailView):
 def AthleteView(request):
     # Handle text input, as needed
     athletename = ''
+    newathletename = ''
     POST_data = request.POST.dict()
 
     if POST_data.get('id') is None:
 
         if request.method == 'POST':
-            form = AthleteNameForm(request.POST)
-            if form.is_valid():
-                athletename = form.cleaned_data.get('athletename')
-        else:
-            form = AthleteNameForm()
+            athletename = POST_data.get('athletename')
+            newathletename = POST_data.get('newathletename')
+
+        # Create new profile as needed
+        if newathletename is not None:
+            new_athlete_profile = AthleteProfile(name=newathletename)
+            new_athlete_profile.save()
+            athletename = newathletename
 
         # Preparation of rendering screen
         try:
             athleteprofile = AthleteProfile.objects.get(name__contains=athletename)
         except MultipleObjectsReturned:
             athleteprofile = AthleteProfile.objects.filter(name__contains=athletename)[0]
-
-        context = {'athleteprofile': athleteprofile, 'form': form}
+        except ObjectDoesNotExist:
+            athleteprofile = AthleteProfile.objects.filter(name__contains='')[0]
+        context = {'athleteprofile': athleteprofile}
         html = 'polls/index.html'
 
     elif POST_data.get('id') is not None:
