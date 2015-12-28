@@ -2,6 +2,14 @@ li a {
     color: green;
 }
 
+tr:nth-child(even) {
+    background: #DDD
+}
+
+tr:nth-child(odd) {
+    background: #FFF
+}
+
 body {
     /*background: white url("images/wallpaper.jpg") no-repeat right*/
 }

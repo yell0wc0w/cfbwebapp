@@ -51,13 +51,19 @@ def AthleteView(request):
         except MultipleObjectsReturned:
             athleteprofile = AthleteProfile.objects.filter(name__contains=athletename)[0]
 
+        athleteprofile.setup_stats()
+
         #save data in DB
-        athleteprofile.set_stat_value(POST_data.get('id'), int(POST_data.get('value')))
+        if POST_data.get('value').isdigit():
+            athleteprofile.set_stat_value(POST_data.get('id'), int(POST_data.get('value')))
+        else:
+            athleteprofile.set_stat_value(POST_data.get('id'), POST_data.get('value'))
+
+        athleteprofile.presave_stats()
         athleteprofile.save()
 
-
         #now return new value to page (perhaps DB call is not required? future optimization)
-        context = {'stat_result': athleteprofile.get_stat_value(POST_data.get('id')) }
+        context = {'stat_result': athleteprofile.get_stat_value(POST_data.get('id'))}
         html = 'polls/results.html'
 
     return render(request, html, context)

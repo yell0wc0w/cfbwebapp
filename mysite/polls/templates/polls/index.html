@@ -34,18 +34,253 @@ $(function() {
 </form>
 
 <h1 id="athletename">{{ athleteprofile.name }}</h1>
-<table style="width:30%;text-align:center">
+<table style="width:30%;text-align:center" border="1">
     <tr>
         <th>Movement </th>
         <th>Current PR</th>
     </tr>
     <tr>
-        <td>Back Squat 1RM </td>
-        <td class="editable_textarea" id="backsquat_value">{{ athleteprofile.backsquat }}</td>
+        <td>Snatch 1RM </td>
+        <td class="editable_textarea" id="snatch_1rm">{{ athleteprofile.snatch_1rm }}</td>
     </tr>
     <tr>
-        <td>Deadlift 1RM </td>
-        <td class="editable_textarea" id="deadlift_value">{{ athleteprofile.deadlift }}</td>
+        <td>power_snatch_1rm</td>
+        <td class="editable_textarea" id="power_snatch_1rm">{{ athleteprofile.power_snatch_1rm }}</td>
+    </tr>
+    <tr>
+        <td>hang_snatch_1rm</td>
+        <td class="editable_textarea" id="hang_snatch_1rm">{{ athleteprofile.hang_snatch_1rm }}</td>
+    </tr>
+    <tr>
+        <td>squat_snatch_1rm</td>
+        <td class="editable_textarea" id="squat_snatch_1rm">{{ athleteprofile.squat_snatch_1rm }}</td>
+    </tr>
+
+    <tr>
+        <td>clean_and_jerk_1rm</td>
+        <td class="editable_textarea" id="clean_and_jerk_1rm">{{ athleteprofile.clean_and_jerk_1rm }}</td>
+    </tr>
+
+    <tr>
+        <td>hang_clean_1rm</td>
+        <td class="editable_textarea" id="hang_clean_1rm">{{ athleteprofile.hang_clean_1rm }}</td>
+    </tr>
+    <tr>
+        <td>power_clean_1rm</td>
+        <td class="editable_textarea" id="power_clean_1rm">{{ athleteprofile.power_clean_1rm }}</td>
+    </tr>
+    <tr>
+        <td>squat_clean_1rm</td>
+        <td class="editable_textarea" id="squat_clean_1rm">{{ athleteprofile.squat_clean_1rm }}</td>
+    </tr>
+
+    <tr>
+        <td>split_jerk_1rm</td>
+        <td class="editable_textarea" id="split_jerk_1rm">{{ athleteprofile.split_jerk_1rm }}</td>
+    </tr>
+    <tr>
+        <td>push_jerk_1rm</td>
+        <td class="editable_textarea" id="push_jerk_1rm">{{ athleteprofile.push_jerk_1rm }}</td>
+    </tr>
+    <tr>
+        <td>push_press_1rm</td>
+        <td class="editable_textarea" id="push_press_1rm">{{ athleteprofile.push_press_1rm }}</td>
+    </tr>
+    <tr>
+        <td>shoulder_press_1rm</td>
+        <td class="editable_textarea" id="shoulder_press_1rm">{{ athleteprofile.shoulder_press_1rm }}</td>
+    </tr>
+
+    <tr>
+        <td>backsquat_1rm</td>
+        <td class="editable_textarea" id="backsquat_1rm">{{ athleteprofile.backsquat_1rm }}</td>
+    </tr>
+    <tr>
+        <td>backsquat_3rm</td>
+        <td class="editable_textarea" id="backsquat_3rm">{{ athleteprofile.backsquat_3rm }}</td>
+    </tr>
+    <tr>
+        <td>backsquat_5rm</td>
+        <td class="editable_textarea" id="backsquat_5rm">{{ athleteprofile.backsquat_5rm }}</td>
+    </tr>
+
+    <tr>
+        <td>front_squat_1rm</td>
+        <td class="editable_textarea" id="front_squat_1rm">{{ athleteprofile.front_squat_1rm }}</td>
+    </tr>
+    <tr>
+        <td>front_squat_3rm</td>
+        <td class="editable_textarea" id="front_squat_3rm">{{ athleteprofile.front_squat_3rm }}</td>
+    </tr>
+    <tr>
+        <td>front_squat_5rm</td>
+        <td class="editable_textarea" id="front_squat_5rm">{{ athleteprofile.front_squat_5rm }}</td>
+    </tr>
+
+    <tr>
+        <td>deadlift_1rm</td>
+        <td class="editable_textarea" id="deadlift_1rm">{{ athleteprofile.deadlift_1rm }}</td>
+    </tr>
+    <tr>
+        <td>deadlift_3rm</td>
+        <td class="editable_textarea" id="deadlift_3rm">{{ athleteprofile.deadlift_3rm }}</td>
+    </tr>
+    <tr>
+        <td>deadlift_5rm</td>
+        <td class="editable_textarea" id="deadlift_5rm">{{ athleteprofile.deadlift_5rm }}</td>
+    </tr>
+
+    <tr>
+        <td>angie</td>
+        <td class="editable_textarea" id="angie">{{ athleteprofile.angie }}</td>
+    </tr>
+    <tr>
+        <td>barbara</td>
+        <td class="editable_textarea" id="barbara">{{ athleteprofile.barbara }}</td>
+    </tr>
+    <tr>
+        <td>chelsea</td>
+        <td class="editable_textarea" id="chelsea">{{ athleteprofile.chelsea }}</td>
+    </tr>
+    <tr>
+        <td>cindy</td>
+        <td class="editable_textarea" id="cindy">{{ athleteprofile.cindy }}</td>
+    </tr>
+    <tr>
+        <td>diane</td>
+        <td class="editable_textarea" id="diane">{{ athleteprofile.diane }}</td>
+    </tr>
+    <tr>
+        <td>elizabeth</td>
+        <td class="editable_textarea" id="elizabeth">{{ athleteprofile.elizabeth }}</td>
+    </tr>
+    <tr>
+        <td>fran</td>
+        <td class="editable_textarea" id="fran">{{ athleteprofile.fran }}</td>
+    </tr>
+    <tr>
+        <td>grace</td>
+        <td class="editable_textarea" id="grace">{{ athleteprofile.grace }}</td>
+    </tr>
+    <tr>
+        <td>nicole</td>
+        <td class="editable_textarea" id="nicole">{{ athleteprofile.nicole }}</td>
+    </tr>
+    <tr>
+        <td>helen</td>
+        <td class="editable_textarea" id="helen">{{ athleteprofile.helen }}</td>
+    </tr>
+    <tr>
+        <td>isabel</td>
+        <td class="editable_textarea" id="isabel">{{ athleteprofile.isabel }}</td>
+    </tr>
+    <tr>
+        <td>jackie</td>
+        <td class="editable_textarea" id="jackie">{{ athleteprofile.jackie }}</td>
+    </tr>
+    <tr>
+        <td>karen</td>
+        <td class="editable_textarea" id="karen">{{ athleteprofile.karen }}</td>
+    </tr>
+    <tr>
+        <td>mary</td>
+        <td class="editable_textarea" id="mary">{{ athleteprofile.mary }}</td>
+    </tr>
+    <tr>
+        <td>nancy</td>
+        <td class="editable_textarea" id="nancy">{{ athleteprofile.nancy }}</td>
+    </tr>
+    <tr>
+        <td>annie</td>
+        <td class="editable_textarea" id="annie">{{ athleteprofile.annie }}</td>
+    </tr>
+    <tr>
+        <td>eva</td>
+        <td class="editable_textarea" id="eva">{{ athleteprofile.eva }}</td>
+    </tr>
+    <tr>
+        <td>kelly</td>
+        <td class="editable_textarea" id="kelly">{{ athleteprofile.kelly }}</td>
+    </tr>
+    <tr>
+        <td>jt</td>
+        <td class="editable_textarea" id="jt">{{ athleteprofile.jt }}</td>
+    </tr>
+    <tr>
+        <td>michael</td>
+        <td class="editable_textarea" id="michael">{{ athleteprofile.michael }}</td>
+    </tr>
+    <tr>
+        <td>murph</td>
+        <td class="editable_textarea" id="murph">{{ athleteprofile.murph }}</td>
+    </tr>
+    <tr>
+        <td>daniel</td>
+        <td class="editable_textarea" id="daniel">{{ athleteprofile.daniel }}</td>
+    </tr>
+    <tr>
+        <td>josh</td>
+        <td class="editable_textarea" id="josh">{{ athleteprofile.josh }}</td>
+    </tr>
+    <tr>
+        <td>filthy50</td>
+        <td class="editable_textarea" id="filthy50">{{ athleteprofile.filthy50 }}</td>
+    </tr>
+    <tr>
+        <td>badger</td>
+        <td class="editable_textarea" id="badger">{{ athleteprofile.badger }}</td>
+    </tr>
+    <tr>
+        <td>nate</td>
+        <td class="editable_textarea" id="nate">{{ athleteprofile.nate }}</td>
+    </tr>
+    <tr>
+        <td>randy</td>
+        <td class="editable_textarea" id="randy">{{ athleteprofile.randy }}</td>
+    </tr>
+    <tr>
+        <td>tommy_v</td>
+        <td class="editable_textarea" id="tommy_v">{{ athleteprofile.tommy_v }}</td>
+    </tr>
+    <tr>
+        <td>ryan</td>
+        <td class="editable_textarea" id="ryan">{{ athleteprofile.ryan }}</td>
+    </tr>
+    <tr>
+        <td>mr_joshua</td>
+        <td class="editable_textarea" id="mr_joshua">{{ athleteprofile.mr_joshua }}</td>
+    </tr>
+    <tr>
+        <td>dt</td>
+        <td class="editable_textarea" id="dt">{{ athleteprofile.dt }}</td>
+    </tr>
+    <tr>
+        <td>danny</td>
+        <td class="editable_textarea" id="danny">{{ athleteprofile.danny }}</td>
+    </tr>
+    <tr>
+        <td>the_seven</td>
+        <td class="editable_textarea" id="the_seven">{{ athleteprofile.the_seven }}</td>
+    </tr>
+    <tr>
+        <td>lumberjack20</td>
+        <td class="editable_textarea" id="lumberjack20">{{ athleteprofile.lumberjack20 }}</td>
+    </tr>
+    <tr>
+        <td>mcghee</td>
+        <td class="editable_textarea" id="mcghee">{{ athleteprofile.mcghee }}</td>
+    </tr>
+    <tr>
+        <td>jack</td>
+        <td class="editable_textarea" id="jack">{{ athleteprofile.jack }}</td>
+    </tr>
+    <tr>
+        <td>bulger</td>
+        <td class="editable_textarea" id="bulger">{{ athleteprofile.bulger }}</td>
+    </tr>
+    <tr>
+        <td>fight_gone_bad</td>
+        <td class="editable_textarea" id="fight_gone_bad">{{ athleteprofile.fight_gone_bad }}</td>
     </tr>
 </table>
 
