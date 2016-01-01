@@ -77,8 +77,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'djangotestdbsqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
     }
 }
 
@@ -120,3 +119,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# # Allow all host hosts/domain names for this site
+ALLOWED_HOSTS = ['*']
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+
+DATABASES = { 'default' : dj_database_url.config()}
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# try to load local_settings.py if it exists
+try:
+    from .local_settings import *
+    print('Local settings running!')
+except Exception as e:
+    print('Production settings running!')
+    pass
